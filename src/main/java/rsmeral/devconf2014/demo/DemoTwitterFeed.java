@@ -31,7 +31,7 @@ public class DemoTwitterFeed {
     public List<Tweet> pollTweets() {
         lifeCycleService.buildSessionFor("Twitter");
         lifeCycleService.getCurrentSession().setAccessToken(new Token(prop.getProperty("accessToken"), prop.getProperty("accessTokenSecret")));
-        List<Tweet> tweets = timeline.getUserTimeline(prop.getProperty("user"), 1, NUM_TWEETS);
+        List<Tweet> tweets = timeline.getMentions(1, NUM_TWEETS);
         return tweets;
     }
 

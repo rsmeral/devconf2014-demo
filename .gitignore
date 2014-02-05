@@ -1,3 +1,5 @@
 target
 nb-configuration.xml
 build.sh
+.openshift
+deployments
