@@ -7,7 +7,7 @@ Demonstrates features of Agorava, a tiny bit of DeltaSpike and some CDI features
 ## Usage
 1. Create API key and access token in your Twitter account and enter the values in prepared `pom.xml` properties.
 2. In the file `src/main/resources/demo.properties`, define the twitter user and the filter words as a comma-separated list of values.
-3. Build, deploy to application server and access `http://localhost:8080/devconf2014-demo/tweets
+3. Build, deploy to application server and access `http://localhost:8080/devconf2014-demo/tweets`
 
 ## Note
 The application code does not necessarily reflect any recommended coding practices and conventions.
