@@ -19,6 +19,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
     <decorators>
-        <class>rsmeral.devconf2014.demo.SimpleTweetFilteringDecorator</class>
+        <class>rsmeral.devconf2014.demo.filter.SimpleTweetFilteringDecorator</class>
     </decorators>
+    <interceptors>
+        <class>rsmeral.devconf2014.demo.hack.AgoravaOAuthHack</class>
+        <class>rsmeral.devconf2014.demo.limiter.RateLimitCacher</class>
+    </interceptors>
 </beans>

@@ -1,4 +1,4 @@
-package rsmeral.devconf2014.demo;
+package rsmeral.devconf2014.demo.simple;
 
 import java.util.Date;
 

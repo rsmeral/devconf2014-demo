@@ -1,33 +1,31 @@
-package rsmeral.devconf2014.demo;
+package rsmeral.devconf2014.demo.filter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
-import org.apache.deltaspike.core.api.resourceloader.ExternalResource;
+import rsmeral.devconf2014.demo.simple.SimpleTweet;
+import rsmeral.devconf2014.demo.simple.SimpleTwitterFeed;
 
 @Decorator
 public abstract class SimpleTweetFilteringDecorator implements SimpleTwitterFeed {
 
     @Inject
-    @ExternalResource(location = "demo.properties")
-    private Properties prop;
-    
-    @Inject
     @Delegate
     @Any
     private SimpleTwitterFeed feed;
+
+    @Inject
+    private FilterTerms terms;
 
     @Override
     public List<SimpleTweet> getSimpleTweets() {
         List<SimpleTweet> simpleTweets = feed.getSimpleTweets();
         List<SimpleTweet> filtered = new ArrayList<SimpleTweet>();
         for (SimpleTweet tweet : simpleTweets) {
-            if (containsAllTerms(tweet.getText(), filterTerms())) {
+            if (containsAllTerms(tweet.getText(), terms.getList())) {
                 filtered.add(tweet);
             }
         }
@@ -41,10 +39,6 @@ public abstract class SimpleTweetFilteringDecorator implements SimpleTwitterFeed
             }
         }
         return true;
-    }
-
-    private List<String> filterTerms() {
-        return Arrays.asList(prop.getProperty("filter").split(","));
     }
 
 }
